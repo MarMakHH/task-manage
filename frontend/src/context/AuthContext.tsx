@@ -21,7 +21,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const login = (userData: User) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.error('Login called without valid token in localStorage');
+      console.error('Login called without valid token');
       return;
     }
     setUser(userData);
