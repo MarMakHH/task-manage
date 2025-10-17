@@ -36,8 +36,8 @@ flowchart LR
       FE["React App"]
    end
 
-   subgraph Backend["Backend (Node.js + Express)"]
-      BE["API Server"]
+   subgraph Backend["Backend"]
+      BE["API Server (Node + Express)"]
       Auth[(JWT)]
    end
 
