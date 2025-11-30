@@ -52,9 +52,6 @@ jobs:
               working-directory: ./frontend
               run: npm run test
 
-            - name: Audit
-              run: npm audit --audit-level=moderate
-
             - name: Deploy
               env:
                   backend_deploy_url: ${{ secrets.RENDER_DEPLOY_BACKEND_HOOK_URL }}
@@ -64,7 +61,7 @@ jobs:
                   curl "$frontend_deploy_url"
 
     analyze:
-        name: CodeQL Analysis
+        name: CodeQL analysis + Npm audit
         runs-on: ubuntu-latest
         permissions:
             security-events: write
@@ -80,6 +77,9 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
+
+            - name: Audit
+              run: npm audit --audit-level=moderate
 
             - name: Initialize CodeQL
               uses: github/codeql-action/init@v4
